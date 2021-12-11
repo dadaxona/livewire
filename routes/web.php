@@ -17,4 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('contacts');
+Route::get('contacts', function () {
+    return view('contacts');
+});
+
+Route::get('/search-box', function () {
+    return view('searchbox');
+});

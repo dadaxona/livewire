@@ -7,7 +7,7 @@ use App\Models\Post;
   
 class Posts extends Component
 {
-    public $posts, $title, $body, $post_id;
+    public $posts, $name, $email, $password, $post_id;
     public $updateMode = false;
    
 
@@ -15,19 +15,20 @@ class Posts extends Component
     {
         $this->posts = Post::all();
         return view('livewire.posts');
-    }
-  
+    }  
 
     private function resetInputFields(){
-        $this->title = '';
-        $this->body = '';
+        $this->name = '';
+        $this->email = '';
+        $this->password = '';
     }
    
     public function store()
     {
         $validatedDate = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
   
         Post::create($validatedDate);
@@ -41,8 +42,9 @@ class Posts extends Component
     {
         $post = Post::findOrFail($id);
         $this->post_id = $id;
-        $this->title = $post->title;
-        $this->body = $post->body;
+        $this->name = $post->name;
+        $this->email = $post->email;
+        $this->password = $post->password;
   
         $this->updateMode = true;
     }
@@ -56,14 +58,16 @@ class Posts extends Component
     public function update()
     {
         $validatedDate = $this->validate([
-            'title' => 'required',
-            'body' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
   
         $post = Post::find($this->post_id);
         $post->update([
-            'title' => $this->title,
-            'body' => $this->body,
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
         ]);
   
         $this->updateMode = false;

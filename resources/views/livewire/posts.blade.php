@@ -15,9 +15,10 @@
     <table class="table table-bordered mt-5">
         <thead>
             <tr>
-                <th>No.</th>
-                <th>Title</th>
-                <th>Body</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>password</th>
                 <th width="150px">Action</th>
             </tr>
         </thead>
@@ -25,8 +26,9 @@
             @foreach($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->body }}</td>
+                <td>{{ $post->name }}</td>
+                <td>{{ $post->email }}</td>
+                <td>{{ $post->password }}</td>
                 <td>
                     <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
                     <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>
