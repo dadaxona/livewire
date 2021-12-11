@@ -10,32 +10,19 @@ class Posts extends Component
     public $posts, $title, $body, $post_id;
     public $updateMode = false;
    
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     public function render()
     {
         $this->posts = Post::all();
         return view('livewire.posts');
     }
   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     private function resetInputFields(){
         $this->title = '';
         $this->body = '';
     }
    
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function store()
     {
         $validatedDate = $this->validate([
@@ -49,12 +36,7 @@ class Posts extends Component
   
         $this->resetInputFields();
     }
-  
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -65,22 +47,12 @@ class Posts extends Component
         $this->updateMode = true;
     }
   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function cancel()
     {
         $this->updateMode = false;
         $this->resetInputFields();
     }
   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function update()
     {
         $validatedDate = $this->validate([
@@ -99,12 +71,7 @@ class Posts extends Component
         session()->flash('message', 'Post Updated Successfully.');
         $this->resetInputFields();
     }
-   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+ 
     public function delete($id)
     {
         Post::find($id)->delete();
