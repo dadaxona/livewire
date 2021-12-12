@@ -2,22 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
 use Livewire\Component;
 
-use App\Models\Post;
-
-class Search extends Component
+class Pro extends Component
 {
-  
+   
     public $searchTerm;
+
 
     public function render()
     {
-        $searchTerm = '%'.$this->searchTerm.'%';     
+        $searchTerm = '%'.$this->searchTerm.'%';
         $usee=Post::where('name', 'like', $searchTerm)
             ->orWhere('email', 'like', $searchTerm)
             ->orWhere('password', 'like', $searchTerm)
             ->paginate(5);
-        return view('livewire.search',['users'=>$usee]);
+        return view('livewire.pro',['users'=>$usee]);
     }
 }

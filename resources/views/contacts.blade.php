@@ -19,7 +19,9 @@
                                 {{ session('message') }}
                             </div>
                         @endif
+                   
                         @livewire('posts')
+                   
                     </div>
                 </div>
             </div>
